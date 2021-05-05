@@ -62,6 +62,8 @@ class DingoServiceProvider extends ServiceProvider
 
         $this->registerDocsCommand();
 
+        $this->registerTranslation();
+
         if (class_exists('Illuminate\Foundation\Application', false)) {
             $this->commands([
                 \Dingo\Api\Console\Command\Cache::class,

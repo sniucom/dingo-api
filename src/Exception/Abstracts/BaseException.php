@@ -82,6 +82,7 @@ abstract class BaseException extends HttpException implements MessageBagErrors
      */
     private function getLocalMessage($message)
     {
+        $message = empty($message) || !is_string($message) ? $this->message() : $message;
         if (preg_match("/^\d+$/", $message)) {
             return __('api::errors.' . $message);
         }

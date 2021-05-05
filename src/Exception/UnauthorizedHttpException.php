@@ -33,6 +33,6 @@ class UnauthorizedHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.Unauthorized';
+        return '1000004';
     }
 }

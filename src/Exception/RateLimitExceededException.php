@@ -39,6 +39,6 @@ class RateLimitExceededException extends BaseException
      */
     protected function message()
     {
-        return 'Common.RequestFrequently';
+        return '1000011';
     }
 }

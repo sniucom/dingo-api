@@ -21,4 +21,12 @@ class ValidationHttpException extends ResourceException
         $message = is_array($errors) && !empty($errors) && is_string($errors[0]) ? $errors[0] : null;
         parent::__construct($message, $errors, $previous, $headers, $code);
     }
+
+    /**
+     * @inheritdoc
+     */
+    protected function message()
+    {
+        return '1000016';
+    }
 }

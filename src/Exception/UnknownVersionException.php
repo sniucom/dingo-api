@@ -20,6 +20,6 @@ class UnknownVersionException extends BaseException
      */
     protected function message()
     {
-        return 'Common.UnknownVersion';
+        return '1000009';
     }
 }

@@ -20,6 +20,6 @@ class AccessDeniedHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.AccessDenied';
+        return '1000012';
     }
 }

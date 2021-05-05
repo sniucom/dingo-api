@@ -55,6 +55,6 @@ class InternalHttpException extends BaseException
      */
     protected function message()
     {
-       return 'Common.InternalRequestFailed';
+       return '1000010';
     }
 }

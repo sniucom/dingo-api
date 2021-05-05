@@ -20,6 +20,6 @@ class NotAcceptableHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.NotAcceptable';
+        return '1000013';
     }
 }

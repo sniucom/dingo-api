@@ -20,6 +20,6 @@ class GoneHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.ResourceHadGone';
+        return '1000014';
     }
 }

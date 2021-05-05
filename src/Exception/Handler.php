@@ -150,7 +150,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
     {
         // 非调试模式 非扩展自BaseException抽象类都处理成400 网络错误
         if (!config('api.debug') && !($exception instanceof BaseException)) {
-            $exception = new BadRequestHttpException('Common.NetworkAbnormality');
+            $exception = new BadRequestHttpException('1000001');
         }
 
         // Convert Eloquent's 500 ModelNotFoundException into a 404 NotFoundHttpException

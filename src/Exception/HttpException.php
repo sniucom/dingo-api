@@ -20,6 +20,6 @@ class HttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.SystemInternalError';
+        return '1000003';
     }
 }

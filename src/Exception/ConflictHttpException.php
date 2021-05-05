@@ -20,6 +20,6 @@ class ConflictHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.ConflictRequest';
+        return '1000015';
     }
 }

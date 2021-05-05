@@ -20,6 +20,6 @@ class BadRequestHttpException extends BaseException
      */
     protected function message()
     {
-        return 'Common.BadRequest';
+        return '1000002';
     }
 }

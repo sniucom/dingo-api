@@ -20,6 +20,6 @@ class ResourceException extends BaseException
      */
     protected function message()
     {
-        return 'Common.UnprocessableEntity';
+        return '1000005';
     }
 }

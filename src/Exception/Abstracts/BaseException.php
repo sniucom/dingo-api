@@ -82,10 +82,8 @@ abstract class BaseException extends HttpException implements MessageBagErrors
      */
     private function getLocalMessage($message)
     {
-        $message = empty($message) || !is_string($message) ? $this->message() : $message;
-
-        if (preg_match("/^([\w-]+\.)?[\w-]+$/", $message)) {
-            return __('api::errors' . $message);
+        if (preg_match("/^\d+$/", $message)) {
+            return __('api::errors.' . $message);
         }
 
         return $message;
@@ -101,10 +99,11 @@ abstract class BaseException extends HttpException implements MessageBagErrors
     private function getFinalCode($code, $message)
     {
         if (!$code) {
-            if (preg_match("/^([\w-]+\.)?[\w-]+$/", $message)) {
+            $message = empty($message) || !is_string($message) ? $this->message() : $message;
+            if (preg_match("/^\d+$/", $message)) {
                 $code = $message;
             } else {
-                $code = $this->message();
+                $code = '1000001';
             }
         }
 

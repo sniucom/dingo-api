@@ -4,7 +4,7 @@ namespace Dingo\Api\Http\Parser;
 
 use Illuminate\Http\Request;
 use Dingo\Api\Contract\Http\Parser;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
 
 class Accept implements Parser
 {
@@ -61,7 +61,7 @@ class Accept implements Parser
      * @param \Illuminate\Http\Request $request
      * @param bool                     $strict
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
+     * @throws \Dingo\Api\Exception\BadRequestHttpException
      *
      * @return array
      */
@@ -71,7 +71,7 @@ class Accept implements Parser
 
         if (! preg_match($pattern, $request->header('accept'), $matches)) {
             if ($strict) {
-                throw new BadRequestHttpException('Accept header could not be properly parsed because of a strict matching process.');
+                throw new BadRequestHttpException('由于严格匹配过程,Accept header无法正确地被解析.');
             }
 
             $default = 'application/'.$this->standardsTree.'.'.$this->subtype.'.'.$this->version.'+'.$this->format;

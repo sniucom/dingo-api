@@ -5,7 +5,7 @@ namespace Dingo\Api\Tests\Http\Parser;
 use Dingo\Api\Http\Parser\Accept;
 use Dingo\Api\Http\Request;
 use Dingo\Api\Tests\BaseTestCase;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
 
 class AcceptTest extends BaseTestCase
 {

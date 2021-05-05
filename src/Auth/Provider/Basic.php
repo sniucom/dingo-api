@@ -5,7 +5,7 @@ namespace Dingo\Api\Auth\Provider;
 use Dingo\Api\Routing\Route;
 use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 
 class Basic extends Authorization
 {
@@ -50,7 +50,7 @@ class Basic extends Authorization
         $this->validateAuthorizationHeader($request);
 
         if (($response = $this->auth->onceBasic($this->identifier)) && $response->getStatusCode() === 401) {
-            throw new UnauthorizedHttpException('Basic', 'Invalid authentication credentials.');
+            throw new UnauthorizedHttpException('Basic', '身份验证凭证无效.');
         }
 
         return $this->auth->user();

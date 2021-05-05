@@ -76,7 +76,7 @@ class Laravel implements Adapter
     public function dispatch(Request $request, $version)
     {
         if (! isset($this->routes[$version])) {
-            throw new UnknownVersionException;
+            throw n`ew UnknownVersionException;
         }
 
         $routes = $this->mergeOldRoutes($version);

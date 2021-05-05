@@ -8,10 +8,9 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Validation\Validator;
 use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Validation\ValidatesWhenResolvedTrait;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Dingo\Api\Exception\AccessDeniedHttpException;
 
 class FormRequest extends Request implements ValidatesWhenResolved
 {
@@ -224,7 +223,7 @@ class FormRequest extends Request implements ValidatesWhenResolved
     protected function failedAuthorization()
     {
         if ($this->container['request'] instanceof Request) {
-            throw new HttpException(403);
+            throw new AccessDeniedHttpException;
         }
 
         parent::failedAuthorization();

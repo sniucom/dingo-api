@@ -78,7 +78,7 @@ class Binding
             return $this->resolver;
         }
 
-        throw new RuntimeException('Unable to resolve transformer binding.');
+        throw new RuntimeException('无法解析转换器绑定.');
     }
 
     /**

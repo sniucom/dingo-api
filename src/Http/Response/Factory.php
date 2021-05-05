@@ -9,7 +9,7 @@ use Dingo\Api\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Pagination\Paginator;
 use Dingo\Api\Transformer\Factory as TransformerFactory;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\HttpException;
 
 class Factory
 {
@@ -213,13 +213,13 @@ class Factory
      * @param string $message
      * @param int    $statusCode
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
     public function error($message, $statusCode)
     {
-        throw new HttpException($statusCode, $message);
+        throw new HttpException($message, null, null, [], $statusCode);
     }
 
     /**
@@ -227,7 +227,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -241,7 +241,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -255,7 +255,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -269,7 +269,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -283,7 +283,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -297,7 +297,7 @@ class Factory
      *
      * @param string $message
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return void
      */
@@ -328,6 +328,6 @@ class Factory
             return new Response($parameters[0]);
         }
 
-        throw new ErrorException('Undefined method '.get_class($this).'::'.$method);
+        throw new ErrorException('未定义方法 '.get_class($this).'::'.$method);
     }
 }

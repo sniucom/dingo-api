@@ -12,7 +12,7 @@ use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher as EventDispatcher;
 use Mockery as m;
 use StdClass;
-use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
+use Dingo\Api\Exception\NotAcceptableHttpException;
 
 class ResponseTest extends BaseTestCase
 {

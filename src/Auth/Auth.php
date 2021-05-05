@@ -5,8 +5,8 @@ namespace Dingo\Api\Auth;
 use Exception;
 use Dingo\Api\Routing\Router;
 use Illuminate\Container\Container;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 
 class Auth
 {
@@ -66,7 +66,7 @@ class Auth
      *
      * @param array $providers
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
+     * @throws \Dingo\Api\Exception\UnauthorizedHttpException
      *
      * @return mixed
      */
@@ -101,7 +101,7 @@ class Auth
      *
      * @param array $exceptionStack
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
+     * @throws \Dingo\Api\Exception\UnauthorizedHttpException
      *
      * @return void
      */

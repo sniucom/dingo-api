@@ -11,7 +11,7 @@ use Dingo\Api\Tests\Stubs\RoutingControllerStub;
 use Dingo\Api\Tests\Stubs\ThrottleStub;
 use Illuminate\Container\Container;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\HttpException;
 
 class RouterTest extends Adapter\BaseAdapterTest
 {

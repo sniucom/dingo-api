@@ -45,7 +45,7 @@ class RateLimit
      * @param \Dingo\Api\Http\Request $request
      * @param \Closure                $next
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Dingo\Api\Exception\HttpException
      *
      * @return mixed
      */
@@ -64,7 +64,7 @@ class RateLimit
         $this->handler->rateLimitRequest($request, $route->getRateLimit(), $route->getRateLimitExpiration());
 
         if ($this->handler->exceededRateLimit()) {
-            throw new RateLimitExceededException('You have exceeded your rate limit.', null, $this->getHeaders());
+            throw new RateLimitExceededException(null, null, null, $this->getHeaders());
         }
 
         $response = $next($request);

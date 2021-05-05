@@ -7,7 +7,7 @@ use Tymon\JWTAuth\JWTAuth;
 use Dingo\Api\Routing\Route;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 
 class JWT extends Authorization
 {
@@ -44,7 +44,7 @@ class JWT extends Authorization
 
         try {
             if (! $user = $this->auth->setToken($token)->authenticate()) {
-                throw new UnauthorizedHttpException('JWTAuth', 'Unable to authenticate with invalid token.');
+                throw new UnauthorizedHttpException('JWTAuth', '身份验证凭证错误或已失效.');
             }
         } catch (JWTException $exception) {
             throw new UnauthorizedHttpException('JWTAuth', $exception->getMessage(), $exception);

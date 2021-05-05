@@ -8,7 +8,7 @@ use Dingo\Api\Tests\BaseTestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 
 class BasicTest extends BaseTestCase
 {

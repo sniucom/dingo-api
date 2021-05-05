@@ -2,6 +2,7 @@
 
 namespace Dingo\Api\Exception;
 
+use Dingo\Api\Exception\Abstracts\BaseException;
 use Dingo\Api\Http\Request;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response as BaseResponse;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use Dingo\Api\Exception\BadRequestHttpException;
 
 class Handler implements ExceptionHandler, IlluminateExceptionHandler
 {
@@ -146,6 +148,11 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      */
     public function handle($exception)
     {
+        // 非调试模式 非扩展自BaseException抽象类都处理成400 网络错误
+        if (!config('api.debug') && !($exception instanceof BaseException)) {
+            $exception = new BadRequestHttpException('Common.NetworkAbnormality');
+        }
+
         // Convert Eloquent's 500 ModelNotFoundException into a 404 NotFoundHttpException
         if ($exception instanceof ModelNotFoundException) {
             $exception = new NotFoundHttpException($exception->getMessage(), $exception);

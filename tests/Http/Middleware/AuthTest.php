@@ -12,7 +12,7 @@ use Dingo\Api\Tests\Stubs\RoutingAdapterStub;
 use Illuminate\Container\Container;
 use Illuminate\Routing\Route as IlluminateRoute;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 
 class AuthTest extends BaseTestCase
 {

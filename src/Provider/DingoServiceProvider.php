@@ -71,6 +71,20 @@ class DingoServiceProvider extends ServiceProvider
     }
 
     /**
+     * 注册本地化文件
+     *
+     * @return void
+     */
+    protected function registerTranslation()
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'api');
+
+        $this->publishes([
+            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/api'),
+        ]);
+    }
+
+    /**
      * Register the configuration.
      *
      * @return void

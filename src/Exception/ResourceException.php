@@ -3,58 +3,23 @@
 namespace Dingo\Api\Exception;
 
 use Exception;
-use Illuminate\Support\MessageBag;
-use Dingo\Api\Contract\Debug\MessageBagErrors;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\Abstracts\BaseException;
 
-class ResourceException extends HttpException implements MessageBagErrors
+class ResourceException extends BaseException
 {
     /**
-     * MessageBag errors.
-     *
-     * @var \Illuminate\Support\MessageBag
+     * @inheritdoc
      */
-    protected $errors;
-
-    /**
-     * Create a new resource exception instance.
-     *
-     * @param string                               $message
-     * @param \Illuminate\Support\MessageBag|array $errors
-     * @param \Exception                           $previous
-     * @param array                                $headers
-     * @param int                                  $code
-     *
-     * @return void
-     */
-    public function __construct($message = null, $errors = null, Exception $previous = null, $headers = [], $code = 0)
+    protected function status()
     {
-        if (is_null($errors)) {
-            $this->errors = new MessageBag;
-        } else {
-            $this->errors = is_array($errors) ? new MessageBag($errors) : $errors;
-        }
-
-        parent::__construct(422, $message, $previous, $headers, $code);
+        return 422;
     }
 
     /**
-     * Get the errors message bag.
-     *
-     * @return \Illuminate\Support\MessageBag
+     * @inheritdoc
      */
-    public function getErrors()
+    protected function message()
     {
-        return $this->errors;
-    }
-
-    /**
-     * Determine if message bag has any errors.
-     *
-     * @return bool
-     */
-    public function hasErrors()
-    {
-        return ! $this->errors->isEmpty();
+        return 'Common.UnprocessableEntity';
     }
 }

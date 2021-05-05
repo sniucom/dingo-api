@@ -15,7 +15,7 @@ use Dingo\Api\Tests\Stubs\ThrottleStub;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\HttpException;
 
 class RateLimitTest extends BaseTestCase
 {

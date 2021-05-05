@@ -211,7 +211,7 @@ trait Helpers
             return $this->$key();
         }
 
-        throw new ErrorException('Undefined property '.get_class($this).'::'.$key);
+        throw new ErrorException('未定义的属性 '.get_class($this).'::'.$key);
     }
 
     /**
@@ -230,6 +230,6 @@ trait Helpers
             return call_user_func_array([$this->response(), $method], $parameters);
         }
 
-        throw new ErrorException('Undefined method '.get_class($this).'::'.$method);
+        throw new ErrorException('未定义的方法 '.get_class($this).'::'.$method);
     }
 }

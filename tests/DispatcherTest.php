@@ -23,7 +23,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\GoneHttpException;
+use Dingo\Api\Exception\GoneHttpException;
 
 class DispatcherTest extends BaseTestCase
 {

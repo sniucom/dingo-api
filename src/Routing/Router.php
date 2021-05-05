@@ -15,7 +15,8 @@ use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use RuntimeException;
-use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
+use Illuminate\Database\Eloquent\Model;
+use Dingo\Api\Exception\NotAcceptableHttpException;
 
 class Router
 {
@@ -110,6 +111,40 @@ class Router
     }
 
     /**
+     * 数组快速设置路由
+     *
+     * @param $routes
+     * @param string $controller
+     */
+    public function sets($routes, $controller = '')
+    {
+        foreach ($routes as $item) {
+            if (!is_array() || count($item) < 2) {
+                continue;
+            }
+
+            [$uri, $action, $method] = array_merge($item, ['GET']);
+            $method = strtoupper(trim($method));
+
+            if (!in_array($method, ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], true)) {
+                continue;
+            }
+
+            if (!empty($controller) && is_string($controller) && class_exists($controller)) {
+                if (is_string($action) && stripos($action, '@') === false) {
+                    $action = sprintf('%s@%s', $controller);
+                }
+                if (is_array($action) && isset($action['uses']) && stripos($action['uses'], '@') === false) {
+                    $action['controller'] = $controller;
+                }
+            }
+
+            $method = $method === 'GET' ? ['GET', 'HEAD'] : $method;
+            $this->addRoute($method, $uri, $action);
+        }
+    }
+
+    /**
      * An alias for calling the group method, allows a more fluent API
      * for registering a new API version group with optional
      * attributes and a required callback.
@@ -153,7 +188,7 @@ class Router
         $attributes = $this->mergeLastGroupAttributes($attributes);
 
         if (! isset($attributes['version'])) {
-            throw new RuntimeException('A version is required for an API group definition.');
+            throw new RuntimeException('API路由组定义需要定义版本号.');
         } else {
             $attributes['version'] = (array) $attributes['version'];
         }

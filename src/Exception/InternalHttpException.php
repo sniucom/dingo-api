@@ -3,10 +3,9 @@
 namespace Dingo\Api\Exception;
 
 use Exception;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\Abstracts\BaseException;
 
-class InternalHttpException extends HttpException
+class InternalHttpException extends BaseException
 {
     /**
      * The response.
@@ -41,5 +40,21 @@ class InternalHttpException extends HttpException
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function status()
+    {
+        return 500;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function message()
+    {
+       return 'Common.InternalRequestFailed';
     }
 }

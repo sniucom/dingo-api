@@ -15,7 +15,7 @@ use Dingo\Api\Transformer\Factory as TransformerFactory;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
+use Dingo\Api\Exception\NotAcceptableHttpException;
 
 class Response extends IlluminateResponse
 {
@@ -241,7 +241,7 @@ class Response extends IlluminateResponse
     public static function getFormatter($format)
     {
         if (! static::hasFormatter($format)) {
-            throw new NotAcceptableHttpException('Unable to format response according to Accept header.');
+            throw new NotAcceptableHttpException('无法根据Accept Header格式化响应.');
         }
 
         return static::$formatters[$format];

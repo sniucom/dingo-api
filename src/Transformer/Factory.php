@@ -119,7 +119,7 @@ class Factory
         $class = is_object($class) ? get_class($class) : $class;
 
         if (! $this->hasBinding($class)) {
-            throw new RuntimeException('Unable to find bound transformer for "'.$class.'" class.');
+            throw new RuntimeException('无法为 "'.$class.'" 找到所绑定的转换器.');
         }
 
         return $this->bindings[$class];

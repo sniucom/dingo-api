@@ -3,9 +3,9 @@
 namespace Dingo\Api\Exception;
 
 use Exception;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\Abstracts\BaseException;
 
-class RateLimitExceededException extends HttpException
+class RateLimitExceededException extends BaseException
 {
     /**
      * Create a new rate limit exceeded exception instance.
@@ -23,6 +23,22 @@ class RateLimitExceededException extends HttpException
             $headers['Retry-After'] = $headers['X-RateLimit-Reset'] - time();
         }
 
-        parent::__construct(429, $message ?: 'You have exceeded your rate limit.', $previous, $headers, $code);
+        parent::__construct($message, null, $previous, $headers, $code);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function status()
+    {
+        return 429;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function message()
+    {
+        return 'Common.RequestFrequently';
     }
 }

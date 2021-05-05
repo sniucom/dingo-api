@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use Mockery;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\HttpException;
 
 class FactoryTest extends BaseTestCase
 {

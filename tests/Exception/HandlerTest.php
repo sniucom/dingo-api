@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Mockery as m;
 use RuntimeException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Dingo\Api\Exception\HttpException;
 
 class HandlerTest extends BaseTestCase
 {

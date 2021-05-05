@@ -7,8 +7,8 @@ use Dingo\Api\Routing\Route;
 use Dingo\Api\Tests\BaseTestCase;
 use Illuminate\Http\Request;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\UnauthorizedHttpException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class JWTTest extends BaseTestCase

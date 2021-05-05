@@ -7,7 +7,7 @@ use Dingo\Api\Tests\BaseTestCase;
 use Dingo\Api\Tests\Stubs\AuthorizationProviderStub;
 use Illuminate\Http\Request;
 use Mockery as m;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
 
 class AuthorizationTest extends BaseTestCase
 {

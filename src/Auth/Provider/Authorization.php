@@ -4,7 +4,7 @@ namespace Dingo\Api\Auth\Provider;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Dingo\Api\Exception\BadRequestHttpException;
 
 abstract class Authorization implements \Dingo\Api\Contract\Auth\Provider
 {
@@ -20,7 +20,7 @@ abstract class Authorization implements \Dingo\Api\Contract\Auth\Provider
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
+     * @throws \Dingo\Api\Exception\BadRequestHttpException
      *
      * @return bool
      */

@@ -5,14 +5,14 @@ namespace Dingo\Api\Exception;
 use Exception;
 use Dingo\Api\Exception\Abstracts\BaseException;
 
-class UnknownVersionException extends BaseException
+class HttpException extends BaseException
 {
     /**
      * @inheritdoc
      */
     protected function status()
     {
-        return 400;
+        return 500;
     }
 
     /**
@@ -20,6 +20,6 @@ class UnknownVersionException extends BaseException
      */
     protected function message()
     {
-        return 'Common.UnknownVersion';
+        return 'Common.SystemInternalError';
     }
 }
